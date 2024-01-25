@@ -6,7 +6,7 @@ public class Player {
     PShape basket; // Declare a variable to store the SVG file
 
     public Player(float x, float y, int size, int lives) {
-        this.x = x;
+        this.x = x-10;
         this.y = y;
         this.size = size;
         this.lives = lives;
@@ -16,9 +16,9 @@ public class Player {
     public void display() {
         pushMatrix();
         translate(x, y);
-        shape(basket, x, y, size, size);
+        ellipse(0, 0, size, size);
+        shape(basket, 0-14.3, 0-13, size, size);
         popMatrix();
-        
     }
 
     public void move(int dir) {
@@ -41,5 +41,9 @@ public class Player {
 
     public int getLives() {
         return lives;
+    }
+    
+    public void resetLives() {
+      lives = 3;
     }
 }

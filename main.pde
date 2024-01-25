@@ -8,18 +8,17 @@ PImage backgroundImage;
 void setup() {
   size(200, 416);
   backgroundImage = loadImage("assets/bg-2.png");
-  player = new Player(width / 2, height-50, 50, 3);
+  player = new Player(width / 2, height-80, 30, 3);
   balls = new Ball[2]; // Maximum of 3 balls on the screen at a time
   bombs = new Bomb[2]; // Maximum of 3 bombs on the screen at a time
 
   // Initialize balls
   for (int i = 0; i < balls.length; i++) {
-    balls[i] = new Ball(random(width), -random(200, 800), 50);
+    balls[i] = new Ball(random(width), -random(200, 800), 30);
   }
-
   // Initialize bombs
   for (int i = 0; i < bombs.length; i++) {
-    bombs[i] = new Bomb(random(width), -random(200, 800), 50);
+    bombs[i] = new Bomb(random(width), -random(200, 800), 30);
   }
 }
 
@@ -34,7 +33,7 @@ void draw() {
      balls[i].display();
      balls[i].update();
 
-     // Check collision with fruit
+     // Check collision with balls
      if (dist(player.x, player.y, balls[i].x, balls[i].y) < player.size / 2 + balls[i].size / 2) {
        score++;
        balls[i].respawn();
@@ -50,7 +49,7 @@ void draw() {
      // Check collision with bomb
      if (dist(player.x, player.y, bombs[i].x, bombs[i].y) < player.size / 2 + bombs[i].size / 2) {
        score--;
-       bombs[i].respawn();
+       bombs[i].respawn();  
        player.loseLife(); // Lose life when catching bomb
      }
    }
@@ -76,10 +75,47 @@ void draw() {
    textSize(24);
    textAlign(CENTER);
    text("Game Over!", width / 2, height / 2);
+   textSize(12);
+   text("Tekan Enter untuk Mulai Kembali!", width / 2, height / 2 + 40);
  }
 }
 
 void keyPressed() {
  // Move player
  player.move(keyCode);
+ 
+ if (gameOver && keyCode == ENTER) {
+    restartGame();
+  } else {
+    // Move player
+    player.move(keyCode);
+  }
+}
+
+void restartGame() {
+  // Reset game state
+  score = 0;
+  gameOver = false;
+  player.resetLives();
+
+  // Reset player position
+  player.x = width / 2;
+  player.y = height - 80;
+
+  // Reset balls
+  for (int i = 0; i < balls.length; i++) {
+    balls[i].respawn();
+  }
+
+  // Reset bombs
+  for (int i = 0; i < bombs.length; i++) {
+    bombs[i].respawn();
+  }
+}
+
+void keyReleased() {
+  if (!gameOver && keyCode == ENTER) {
+    // Start the game if Enter is pressed at the beginning
+    gameOver = false;
+  }
 }
