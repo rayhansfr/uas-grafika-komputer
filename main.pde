@@ -1,26 +1,30 @@
 Player player;
 Fruit[] fruits;
 Bomb[] bombs;
-PShape[] fruitSVGs;
 int score = 0;
 boolean gameOver = false;
-
-PImage backgroundImage; // Declare a variable to store the background image
+PImage backgroundImage;
 
 void setup() {
   size(200, 400);
-  backgroundImage = loadImage("D:\\Kuliah\\sem 3\\Grafika\\bgphoto2.jpg"); // Load the background image
-  player = new Player(width / 2, height - 50, 30);
-  fruit = new Fruit(random(width), 0, 30);
-  bomb = new Bomb(random(width), 0, 30);
-}
-
-void draw() {
-  background(backgroundImage);
-  size(200, 400);
+  backgroundImage = loadImage("D:\\Kuliah\\sem 3\\Grafika\\bgphoto2.jpg");
   player = new Player(width / 2, height - 50, 30, 3);
   fruits = new Fruit[2]; // Maximum of 3 fruits on the screen at a time
   bombs = new Bomb[2]; // Maximum of 3 bombs on the screen at a time
+
+  // Initialize fruits
+  for (int i = 0; i < fruits.length; i++) {
+    fruits[i] = new Fruit(random(width), -random(200, 800), 30, randomFruit);
+  }
+
+  // Initialize bombs
+  for (int i = 0; i < bombs.length; i++) {
+    bombs[i] = new Bomb(random(width), -random(200, 800), 50, bomb);
+  }
+}
+
+void draw() {
+ background(backgroundImage);
 
  if (!gameOver) {
    player.display();
