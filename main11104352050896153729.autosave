@@ -1,43 +1,36 @@
 Player player;
-Ball[] balls;
+Fruit[] fruits;
 Bomb[] bombs;
+PShape[] fruitSVGs;
 int score = 0;
 boolean gameOver = false;
-PImage backgroundImage;
+
+PImage backgroundImage; // Declare a variable to store the background image
 
 void setup() {
-  size(200, 416);
-  backgroundImage = loadImage("assets/bg-2.png");
-  player = new Player(width / 2, height-50, 50, 3);
-  balls = new Ball[2]; // Maximum of 3 balls on the screen at a time
-  bombs = new Bomb[2]; // Maximum of 3 bombs on the screen at a time
-
-  // Initialize balls
-  for (int i = 0; i < balls.length; i++) {
-    balls[i] = new Ball(random(width), -random(200, 800), 50);
-  }
-
-  // Initialize bombs
-  for (int i = 0; i < bombs.length; i++) {
-    bombs[i] = new Bomb(random(width), -random(200, 800), 50);
-  }
+  size(200, 400);
+  backgroundImage = loadImage("D:\\Kuliah\\sem 3\\Grafika\\bgphoto2.jpg"); // Load the background image
+  player = new Player(width / 2, height - 50, 30);
 }
 
 void draw() {
- background(backgroundImage);
+  background(backgroundImage);
+  size(200, 400);
+  fruits = new Fruit[2]; // Maximum of 3 fruits on the screen at a time
+  bombs = new Bomb[2]; // Maximum of 3 bombs on the screen at a time
 
  if (!gameOver) {
    player.display();
 
-   // Update and display balls
-   for (int i = 0; i < balls.length; i++) {
-     balls[i].display();
-     balls[i].update();
+   // Update and display fruits
+   for (int i = 0; i < fruits.length; i++) {
+     fruits[i].display();
+     fruits[i].update();
 
      // Check collision with fruit
-     if (dist(player.x, player.y, balls[i].x, balls[i].y) < player.size / 2 + balls[i].size / 2) {
+     if (dist(player.x, player.y, fruits[i].x, fruits[i].y) < player.size / 2 + fruits[i].size / 2) {
        score++;
-       balls[i].respawn();
+       fruits[i].respawn();
        player.regainLife(); // Regain life when catching fruit
      }
    }

@@ -10,11 +10,15 @@ public class Player {
         this.y = y;
         this.size = size;
         this.lives = lives;
-        basket = loadShape("D:\\Kuliah\\sem 3\\Grafika\\basket.svg"); // Load the SVG file
+        basket = loadShape("assets/basket.svg"); // Load the SVG file
     }
 
     public void display() {
-        shape(basket, x, 300, 40, 40); // Display the SVG file
+        pushMatrix();
+        translate(x, y);
+        shape(basket, x, y, size, size);
+        popMatrix();
+        
     }
 
     public void move(int dir) {

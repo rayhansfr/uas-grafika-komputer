@@ -6,11 +6,11 @@ public class Bomb {
     float speed;
     PShape bombShape; 
 
-    public Bomb(float x, float y, int size, PShape bombSVG) {
+    public Bomb(float x, float y, int size) {
         this.x = x;
         this.y = y;
         this.size = size;
-        bombShape = loadShape("D:\\Kuliah\\sem 3\\Grafika\\bomb.svg");
+        bombShape = loadShape("assets/bomb (1).svg");
     }
 
     public void display() {
