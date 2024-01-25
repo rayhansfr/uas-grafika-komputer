@@ -45,6 +45,14 @@ class Fruit {
     }
   }
 
+  void update(float y) {
+    this.y += y;
+
+    if (y > height) {
+      respawn();
+    }
+  }
+
   void respawn() {
     x = random(width);
     y = 0;
@@ -86,7 +94,7 @@ Bomb bomb;
 int score = 0;
 
 void setup() {
-  size(400, 400);
+  size(200, 400);
   player = new Player(width / 2, height - 50, 30);
   fruit = new Fruit(random(width), 0, 30);
   bomb = new Bomb(random(width), 0, 30);
@@ -119,6 +127,7 @@ void draw() {
   textSize(16);
   textAlign(LEFT);
   text("Score: " + score, 20, 20);
+
 }
 
 void keyPressed() {
