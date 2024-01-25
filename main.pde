@@ -1,16 +1,19 @@
+
 class Player {
   float x, y;
   int size;
+  PShape basket; // Declare a variable to store the SVG file
+
 
   Player(float x, float y, int size) {
     this.x = x;
     this.y = y;
     this.size = size;
+    basket = loadShape("D:\\Kuliah\\sem 3\\Grafika\\basket.svg"); // Load the SVG file
   }
 
   void display() {
-    fill(0, 0, 255);
-    ellipse(x, y, size, size);
+    shape(basket, x, 300, 40, 40); // Display the SVG file
   }
 
   void move(int dir) {
@@ -25,16 +28,21 @@ class Player {
 class Fruit {
   float x, y;
   int size;
+  PShape fruitShape; // Declare a variable to store the SVG file
+
 
   Fruit(float x, float y, int size) {
     this.x = x;
     this.y = y;
     this.size = size;
+    String[] fruitFiles = {"D:\\Kuliah\\sem 3\\Grafika\\fruit1.svg", "D:\\Kuliah\\sem 3\\Grafika\\fruit2.svg", "D:\\Kuliah\\sem 3\\Grafika\\fruit3.svg"}; // Array of SVG file names
+    String selectedFruit = fruitFiles[int(random(fruitFiles.length))]; // Select a random SVG file
+    fruitShape = loadShape(selectedFruit); // Load the selected SVG file    
   }
 
   void display() {
-    fill(0, 255, 0);
-    ellipse(x, y, size, size);
+    shape(fruitShape, x, y, size, size); // Display the SVG file
+
   }
 
   void update() {
@@ -56,22 +64,27 @@ class Fruit {
   void respawn() {
     x = random(width);
     y = 0;
+    String[] fruitFiles = {"D:\\Kuliah\\sem 3\\Grafika\\fruit1.svg", "D:\\Kuliah\\sem 3\\Grafika\\fruit2.svg", "D:\\Kuliah\\sem 3\\Grafika\\fruit3.svg"}; // Array of SVG file names
+    String selectedFruit = fruitFiles[int(random(fruitFiles.length))]; // Select a random SVG file
+    fruitShape = loadShape(selectedFruit); // Load the selected SVG file 
   }
 }
 
 class Bomb {
   float x, y;
   int size;
+  PShape bombShape; // Declare a variable to store the SVG file
 
   Bomb(float x, float y, int size) {
     this.x = x;
     this.y = y;
     this.size = size;
+    bombShape = loadShape("D:\\Kuliah\\sem 3\\Grafika\\bomb.svg");
   }
 
   void display() {
-    fill(255, 0, 0);
-    ellipse(x, y, size, size);
+    
+    shape(bombShape, x, y, size, size);
   }
 
   void update() {
@@ -93,15 +106,18 @@ Fruit fruit;
 Bomb bomb;
 int score = 0;
 
+PImage backgroundImage; // Declare a variable to store the background image
+
 void setup() {
   size(200, 400);
+  backgroundImage = loadImage("D:\\Kuliah\\sem 3\\Grafika\\bgphoto2.jpg"); // Load the background image
   player = new Player(width / 2, height - 50, 30);
   fruit = new Fruit(random(width), 0, 30);
   bomb = new Bomb(random(width), 0, 30);
 }
 
 void draw() {
-  background(255);
+  background(backgroundImage);
 
   player.display();
   fruit.display();
