@@ -28,6 +28,13 @@ public class Bomb {
         }
     }
     
+    public void update(float speed) {
+        y += speed;
+
+        if (y > height) {
+            respawn();
+        }
+    }
     
 
     public void respawn() {

@@ -40,6 +40,13 @@ void draw() {
        balls[i].respawn();
        player.regainLife(); // Regain life when catching fruit
      }
+     if (score >= 10) {
+       balls[i].update(2.5);
+     } 
+     
+     if (balls[i].y == height) {
+       score--;
+     }
    }
 
    // Update and display bombs
@@ -58,6 +65,8 @@ void draw() {
    if (player.getLives() <= 0) {
      gameOver = true;
    }
+   
+   
 
    // Display lives
    fill(255, 0, 0);

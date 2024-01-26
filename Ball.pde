@@ -23,7 +23,13 @@ class Ball {
     }
   }
  
+  public void update(float speed) {
+      y += speed;
 
+      if (y > height) {
+          respawn();
+      }
+  }
 
 
   void respawn() {
