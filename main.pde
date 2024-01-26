@@ -9,8 +9,8 @@ void setup() {
   size(200, 416);
   backgroundImage = loadImage("assets/bg-2.png");
   player = new Player(width / 2, height-80, 30, 3);
-  balls = new Ball[2]; // Maximum of 3 balls on the screen at a time
-  bombs = new Bomb[2]; // Maximum of 3 bombs on the screen at a time
+  balls = new Ball[2];
+  bombs = new Bomb[2];
 
   // Initialize balls
   for (int i = 0; i < balls.length; i++) {
@@ -20,6 +20,7 @@ void setup() {
   for (int i = 0; i < bombs.length; i++) {
     bombs[i] = new Bomb(random(width), -random(200, 800), 30);
   }
+
 }
 
 void draw() {
@@ -76,6 +77,7 @@ void draw() {
    textAlign(CENTER);
    text("Game Over!", width / 2, height / 2);
    textSize(12);
+   text("Score: " + score, width / 2, height / 2 + 20);
    text("Tekan Enter untuk Mulai Kembali!", width / 2, height / 2 + 40);
  }
 }

@@ -27,6 +27,8 @@ public class Bomb {
             respawn();
         }
     }
+    
+    
 
     public void respawn() {
         x = random(width);

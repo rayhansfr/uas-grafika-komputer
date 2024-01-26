@@ -16,7 +16,7 @@ public class Player {
     public void display() {
         pushMatrix();
         translate(x, y);
-        ellipse(0, 0, size, size);
+        //ellipse(0, 0, size, size);
         shape(basket, 0-14.3, 0-13, size, size);
         popMatrix();
     }

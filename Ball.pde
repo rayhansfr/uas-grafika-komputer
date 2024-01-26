@@ -22,14 +22,9 @@ class Ball {
       respawn();
     }
   }
+ 
 
-  void update(float y) {
-    this.y += y;
 
-    if (y > height) {
-      respawn();
-    }
-  }
 
   void respawn() {
     x = random(width);
