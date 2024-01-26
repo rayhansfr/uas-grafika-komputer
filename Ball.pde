@@ -7,12 +7,12 @@ class Ball {
     this.x = x;
     this.y = y;
     this.size = size;
-    this.ballColor = color(random(255), random(255), random(255)); // Random color
+    this.ballColor = color(random(255), random(255), random(255)); 
   }
 
   void display() {
-    fill(ballColor); // Set fill color
-    ellipse(x, y, size, size); // Draw ellipse
+    fill(ballColor); 
+    ellipse(x, y, size, size);
   }
 
   void update() {
@@ -31,10 +31,9 @@ class Ball {
       }
   }
 
-
   void respawn() {
     x = random(width);
     y = 0;
-    ballColor = color(random(255), random(255), random(255)); // Randomize color
+    ballColor = color(random(255), random(255), random(255)); 
   }
 }

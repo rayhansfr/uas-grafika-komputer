@@ -15,6 +15,7 @@ void setup() {
   // Initialize balls
   for (int i = 0; i < balls.length; i++) {
     balls[i] = new Ball(random(width), -random(200, 800), 30);
+    
   }
   // Initialize bombs
   for (int i = 0; i < bombs.length; i++) {
@@ -33,6 +34,9 @@ void draw() {
    for (int i = 0; i < balls.length; i++) {
      balls[i].display();
      balls[i].update();
+     if (balls[i].y == height) {
+       score--;
+    }
 
      // Check collision with balls
      if (dist(player.x, player.y, balls[i].x, balls[i].y) < player.size / 2 + balls[i].size / 2) {
@@ -44,9 +48,7 @@ void draw() {
        balls[i].update(2.5);
      } 
      
-     if (balls[i].y == height) {
-       score--;
-     }
+     
    }
 
    // Update and display bombs
@@ -66,8 +68,10 @@ void draw() {
      gameOver = true;
    }
    
+   if (player.getLives() <= 0 && score < 0) {
+     gameOver = true;
+   }
    
-
    // Display lives
    fill(255, 0, 0);
    textSize(16);
