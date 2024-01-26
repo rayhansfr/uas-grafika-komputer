@@ -12,7 +12,7 @@ Dosen Pengampu : Anggi Mardiyono, S.Kom., M.Kom
 - Hibban Wijaya Gymnastiar 2207411019 [@hibbastiar](https://github.com/hibbastiar)
 - Rio Aditya Mukti 2207411020 [@RioAdityaMukti](https://github.com/RioAdityaMukti)
 
-**Catch The Ball Game**
+## Catch The Ball Game
 
 Kumpulkan Bola dan dapatkan Score terbaik
 
