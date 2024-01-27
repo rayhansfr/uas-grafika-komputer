@@ -16,8 +16,13 @@ Dosen Pengampu : Anggi Mardiyono, S.Kom., M.Kom
 
 Kumpulkan Bola dan dapatkan Score terbaik
 
-Hati-Hati terhadap Bomb, atau Score anda akan berkurang nyawa anda berkurang
+Hati-Hati terhadap Bomb, atau Score dan nyawa anda akan berkurang
 
-Anda hanya punya 3 Nyawa
+Anda hanya punya 3 Nyawa (Tangkap bola untuk dapatkan kembali nyawa anda)
 
 Inspired By Mini Games dari game **Pou** 
+
+## Demo Game
+
+https://github.com/rayhansfr/uas-grafika-komputer/assets/88795731/54511ced-109d-4177-98d2-9381d5a79d10
+
